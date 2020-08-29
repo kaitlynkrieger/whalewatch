@@ -11,7 +11,6 @@ export default async function handler(req, res) {
  const {
     query: { secret },
   } = req;
-  console.log(secret, Secrets.DEBUG_URL_SECRET);
   if (secret !== Secrets.DebugURLSecret) {
     res.end("Invalid.");
     return;
