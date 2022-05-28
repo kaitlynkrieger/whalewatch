@@ -24,7 +24,7 @@ async function handler(req, res) {
   let timeOfSighting = moment
     .tz(body.when, "America/Los_Angeles")
     .format("h:mma");
-  let messageBody = `Ahoy! ${body.fromName} spotted a 🐋 “${body.details}” (${timeOfSighting})`;
+  let messageBody = `Ahoy! ${body.fromName} spotted a whale: “${body.details}” (${timeOfSighting})`;
   if (body.reallySend) {
     subscribers.forEach(async (sub) => {
       console.log("Notifying", sub.phonenumber);
