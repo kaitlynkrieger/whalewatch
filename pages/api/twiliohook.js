@@ -34,6 +34,7 @@ const Patterns = {
   Anytime: new RegExp("anytime"),
   Subscribe: new RegExp("^(start|subscribe)"),
   Sighting: new RegExp("whale"),
+  MessageReaction: new RegExp("^(laughed|emphasized|liked)"),
   Help: new RegExp("help"),
   Reset: new RegExp("_reset"),
   CancelSighting: new RegExp("^(cancel|no|nevermind)"),
@@ -432,7 +433,7 @@ async function handler(req, res) {
     fn = handleUnsubscribe;
   } else if (Patterns.Subscribe.test(msgBodyLower)) {
     fn = handleSubscribe;
-  } else if (Patterns.Sighting.test(msgBodyLower)) {
+  } else if (Patterns.Sighting.test(msgBodyLower) && !Patterns.MessagingResponse.test(msgBodyLower)) {
     fn = handleSighting;
   } else if (Patterns.Thanks.test(msgBodyLower)) {
     fn = handleThankYou;
