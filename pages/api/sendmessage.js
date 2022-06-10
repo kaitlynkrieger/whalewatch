@@ -35,6 +35,8 @@ async function handler(req, res) {
           to: sub.phonenumber,
         })
         .catch((err) => console.log("Twilio error", err));
+      // sleep a little to back off Twilio
+      await new Promise(r => setTimeout(r, 100));
     });
   } else {
     console.log(
