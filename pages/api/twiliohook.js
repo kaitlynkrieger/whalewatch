@@ -433,7 +433,7 @@ async function handler(req, res) {
     fn = handleUnsubscribe;
   } else if (Patterns.Subscribe.test(msgBodyLower)) {
     fn = handleSubscribe;
-  } else if (Patterns.Sighting.test(msgBodyLower) && !Patterns.MessagingResponse.test(msgBodyLower)) {
+  } else if (Patterns.Sighting.test(msgBodyLower) && !Patterns.MessageReaction.test(msgBodyLower)) {
     fn = handleSighting;
   } else if (Patterns.Thanks.test(msgBodyLower)) {
     fn = handleThankYou;
